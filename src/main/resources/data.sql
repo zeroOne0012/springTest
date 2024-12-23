@@ -5,7 +5,7 @@ insert into article (id, title, content) values (3, 'aaaaa', 'bbbbb');
 
 -- article 더미 데이터
 insert into article (id, title, content) values (4, '당신의 인생 영화는?', '댓글로 알려주세요');
-insert into Article (id, title, content) values (5, '스프링', '연습');
+insert into article (id, title, content) values (5, '스프링', '연습');
 
 -- comment 더미 데이터
 ---- 4번 게시글의 댓글들

@@ -7,7 +7,7 @@
 
     <named-native-query
         name="Comment.findByNickname"
-        result-class="com.example.firstproject.entity.Comment">
+        result-class="com.example.FirstProject.entity.Comment">
         <query>
             <![CDATA[
                 SELECT
