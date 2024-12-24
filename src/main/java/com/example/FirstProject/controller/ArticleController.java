@@ -2,8 +2,10 @@ package com.example.FirstProject.controller;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.FirstProject.dto.ArticleForm;
+import com.example.FirstProject.dto.CommentDto;
 import com.example.FirstProject.entity.Article;
 import com.example.FirstProject.repository.ArticleRepository;
+import com.example.FirstProject.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ import java.util.Optional;
 @Controller
 @Slf4j // 로깅을 위한 어노테이션 (Simple Logging Facade for Java) // facade(파사드): 정면
 public class ArticleController {
+    @Autowired
+    private CommentService commentService;
 
     @Autowired // 스프링 부트가 미리 생성해놓은 객체를 가져다가 연결!
     private ArticleRepository articleRepository;
@@ -47,6 +51,10 @@ public class ArticleController {
     @GetMapping("/articles/{id}")
     public String show(@PathVariable("id") Long id, Model model){
         log.info("id = " + id);
+
+        // ++ 댓글 불러와 등록
+        List<CommentDto> commentDtos = commentService.comments(id);
+        model.addAttribute("commentDtos", commentDtos);
 
         // 1: id로 데이터를 가져옴
 //        자바 8이 아니면 안되는 코드
