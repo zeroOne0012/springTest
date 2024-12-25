@@ -1,5 +1,6 @@
 package com.example.FirstProject.api;
 
+import com.example.FirstProject.annotation.RunningTime;
 import com.example.FirstProject.dto.CommentDto;
 import com.example.FirstProject.entity.Comment;
 import com.example.FirstProject.service.CommentService;
@@ -60,6 +61,7 @@ public class CommentApiController {
     }
 
     // 댓글 삭제
+    @RunningTime
     @DeleteMapping("/api/comments/{id}")
     private ResponseEntity<CommentDto> delete(@PathVariable Long id){
 
